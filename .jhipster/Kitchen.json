@@ -1,0 +1,34 @@
+{
+    "name": "Kitchen",
+    "fields": [
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "dish",
+            "otherEntityName": "dish",
+            "otherEntityRelationshipName": "kitchen"
+        }
+    ],
+    "changelogDate": "20181212134839",
+    "entityTableName": "kitchen",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

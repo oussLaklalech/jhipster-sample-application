@@ -1,0 +1,51 @@
+{
+    "name": "OrderPreparation",
+    "fields": [
+        {
+            "fieldName": "quantity",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "dateOrder",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "dateDelivery",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "specialInstruction",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "consumer",
+            "otherEntityName": "consumer",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "state",
+            "otherEntityName": "state",
+            "otherEntityRelationshipName": "orderPreparation"
+        },
+        {
+            "relationshipName": "dish",
+            "otherEntityName": "dish",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181212134840",
+    "javadoc": "Order entity.",
+    "entityTableName": "order_preparation",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

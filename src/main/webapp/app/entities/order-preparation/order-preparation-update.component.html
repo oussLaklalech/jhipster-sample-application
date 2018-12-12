@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-order-preparation-heading">Create or edit a Order Preparation</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!orderPreparation.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="orderPreparation.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_quantity">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" id="field_quantity"
+                        [(ngModel)]="orderPreparation.quantity" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateOrder">Date Order</label>
+                    <div class="d-flex">
+                        <input id="field_dateOrder" type="datetime-local" class="form-control" name="dateOrder" [(ngModel)]="dateOrder"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateDelivery">Date Delivery</label>
+                    <div class="d-flex">
+                        <input id="field_dateDelivery" type="datetime-local" class="form-control" name="dateDelivery" [(ngModel)]="dateDelivery"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_specialInstruction">Special Instruction</label>
+                    <input type="text" class="form-control" name="specialInstruction" id="field_specialInstruction"
+                        [(ngModel)]="orderPreparation.specialInstruction" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_consumer">Consumer</label>
+                    <select class="form-control" id="field_consumer" name="consumer" [(ngModel)]="orderPreparation.consumerId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="consumerOption.id" *ngFor="let consumerOption of consumers; trackBy: trackConsumerById">{{consumerOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dish">Dish</label>
+                    <select class="form-control" id="field_dish" name="dish" [(ngModel)]="orderPreparation.dishId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dishOption.id" *ngFor="let dishOption of dishes; trackBy: trackDishById">{{dishOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

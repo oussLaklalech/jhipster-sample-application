@@ -38,6 +38,19 @@ public class CacheConfiguration {
             cm.createCache(io.github.jhipster.application.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(io.github.jhipster.application.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Consumer.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Consumer.class.getName() + ".orders", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Consumer.class.getName() + ".comments", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Cooker.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Kitchen.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Kitchen.class.getName() + ".dishes", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.OrderPreparation.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.OrderPreparation.class.getName() + ".states", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.State.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Dish.class.getName(), jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Dish.class.getName() + ".orders", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Dish.class.getName() + ".comments", jcacheConfiguration);
+            cm.createCache(io.github.jhipster.application.domain.Comment.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-comment-heading">Create or edit a Comment</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!comment.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="comment.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_content">Content</label>
+                    <input type="text" class="form-control" name="content" id="field_content"
+                        [(ngModel)]="comment.content" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_note">Note</label>
+                    <input type="number" class="form-control" name="note" id="field_note"
+                        [(ngModel)]="comment.note" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_consumer">Consumer</label>
+                    <select class="form-control" id="field_consumer" name="consumer" [(ngModel)]="comment.consumerId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="consumerOption.id" *ngFor="let consumerOption of consumers; trackBy: trackConsumerById">{{consumerOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dish">Dish</label>
+                    <select class="form-control" id="field_dish" name="dish" [(ngModel)]="comment.dishId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="dishOption.id" *ngFor="let dishOption of dishes; trackBy: trackDishById">{{dishOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

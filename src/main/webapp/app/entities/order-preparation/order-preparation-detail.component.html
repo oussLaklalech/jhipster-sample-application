@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="orderPreparation">
+            <h2><span>Order Preparation</span> {{orderPreparation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Quantity</span></dt>
+                <dd>
+                    <span>{{orderPreparation.quantity}}</span>
+                </dd>
+                <dt><span>Date Order</span></dt>
+                <dd>
+                    <span>{{orderPreparation.dateOrder}}</span>
+                </dd>
+                <dt><span>Date Delivery</span></dt>
+                <dd>
+                    <span>{{orderPreparation.dateDelivery}}</span>
+                </dd>
+                <dt><span>Special Instruction</span></dt>
+                <dd>
+                    <span>{{orderPreparation.specialInstruction}}</span>
+                </dd>
+                <dt><span>Consumer</span></dt>
+                <dd>
+                    <div *ngIf="orderPreparation.consumerId">
+                        <a [routerLink]="['/consumer', orderPreparation.consumerId, 'view']">{{orderPreparation.consumerId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Dish</span></dt>
+                <dd>
+                    <div *ngIf="orderPreparation.dishId">
+                        <a [routerLink]="['/dish', orderPreparation.dishId, 'view']">{{orderPreparation.dishId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/order-preparation', orderPreparation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
