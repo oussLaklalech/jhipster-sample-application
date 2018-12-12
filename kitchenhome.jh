@@ -1,0 +1,83 @@
+/**
+ * [OK] The User entity.
+ */
+entity User {
+	firstName String,
+	lastName String,
+	email String,
+	phoneNumber String,
+	birthday Instant,
+    address String
+}
+
+entity Kitchen {
+	type String,
+    name String,
+    description String
+}
+
+/**
+ * Order entity.
+ */
+entity OrderPreparation {
+	quantity Integer,
+	dateOrder Instant,
+    dateDelivery Instant,
+    specialInstruction String
+}
+
+entity State {
+	/* state can be : 
+     * requested, validated, rejected,
+     * inProgress, terminated, delivered
+     */
+	type String,
+    date Instant
+}
+
+entity Dish {
+	price Double,
+	name String,
+    description String,
+    note Integer
+}
+
+entity Comment {
+	content String,
+    note Integer
+}
+
+relationship OneToOne {
+	User{cooker} to Kitchen
+}
+
+/**relationship ManyToMany {
+	* User{Community(name)} to Community{user}
+ *}*/
+
+relationship OneToMany {
+    Kitchen{dish} to Dish,
+    OrderPreparation{state} to State
+}
+
+
+relationship OneToMany {
+    User{order} to OrderPreparation,
+    Dish{order} to OrderPreparation
+}
+
+relationship OneToMany {
+    User{comment} to Comment,
+    Dish{comment} to Comment
+}
+
+// Set pagination options
+paginate User with pagination
+paginate Dish with pagination
+paginate Kitchen with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
