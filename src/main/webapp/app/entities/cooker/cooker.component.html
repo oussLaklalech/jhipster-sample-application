@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span>Cookers</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-cooker" [routerLink]="['/cooker/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Cooker
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="cookers">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>First Name</span></th>
+            <th><span>Last Name</span></th>
+            <th><span>Email</span></th>
+            <th><span>Phone Number</span></th>
+            <th><span>Birthday</span></th>
+            <th><span>Address</span></th>
+            <th><span>Cooker</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let cooker of cookers ;trackBy: trackId">
+                <td><a [routerLink]="['/cooker', cooker.id, 'view' ]">{{cooker.id}}</a></td>
+                <td>{{cooker.firstName}}</td>
+                <td>{{cooker.lastName}}</td>
+                <td>{{cooker.email}}</td>
+                <td>{{cooker.phoneNumber}}</td>
+                <td>{{cooker.birthday | date:'medium'}}</td>
+                <td>{{cooker.address}}</td>
+                <td>
+                    <div *ngIf="cooker.cookerId">
+                        <a [routerLink]="['../kitchen', cooker.cookerId , 'view' ]" >{{cooker.cookerId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/cooker', cooker.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/cooker', cooker.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'cooker/'+ cooker.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

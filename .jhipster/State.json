@@ -1,0 +1,31 @@
+{
+    "name": "State",
+    "fields": [
+        {
+            "fieldName": "type",
+            "javadoc": "state can be :\nrequested, validated, rejected,\ninProgress, terminated, delivered",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "orderPreparation",
+            "otherEntityName": "orderPreparation",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181212134841",
+    "entityTableName": "state",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="state">
+            <h2><span>State</span> {{state.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span ngbTooltip="state can be :
+requested, validated, rejected,
+inProgress, terminated, delivered">Type</span></dt>
+                <dd>
+                    <span>{{state.type}}</span>
+                </dd>
+                <dt><span>Date</span></dt>
+                <dd>
+                    <span>{{state.date}}</span>
+                </dd>
+                <dt><span>Order Preparation</span></dt>
+                <dd>
+                    <div *ngIf="state.orderPreparationId">
+                        <a [routerLink]="['/order-preparation', state.orderPreparationId, 'view']">{{state.orderPreparationId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/state', state.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
